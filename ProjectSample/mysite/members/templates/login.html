@@ -1,0 +1,394 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Ecology Theme">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/bootstrap.min.css">
+    <!-- Font awsome CSS -->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/flaticon.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/magnific-popup.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/owl.carousel.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/owl.theme.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/animate.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/slick.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/preloader.css" />
+
+    <!-- Revolution Slider -->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/revolution/layers.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/revolution/navigation.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/revolution/settings.css">
+    <!-- Mean Menu-->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/assets/meanmenu.css">
+    <!-- main style-->
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/style.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/responsive.css">
+    <link rel="stylesheet" href="https://www.ecologytheme.com/theme/eduwise/css/demo.css">
+</head>
+
+<body>
+
+    <header class="header_inner contact_page">
+        <!-- Preloader -->
+      
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-lg-12">
+                        <div class="info_wrapper">
+                            <div class="contact_info">
+                                <ul class="list-unstyled">
+                                    <li><i class="flaticon-phone-receiver"></i>+000-2356-222</li>
+                                    <li><i class="flaticon-mail-black-envelope-symbol"></i>contact@yourdomain.com</li>
+                                </ul>
+                            </div>
+                            <div class="login_info">
+                                <ul class="d-flex">
+                                    <li class="nav-item"><a href="{% url 'members:teRegister' %}"
+                                            class="nav-link sign-in js-modal-show"><i
+                                                class="flaticon-user-male-black-shape-with-plus-sign"></i>Sign Up</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'members:teLogin' %}"
+                                            class="nav-link join_now js-modal-show"><i class="flaticon-padlock"></i>Lon
+                                            In</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="edu_nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light bg-faded">
+                    <a class="navbar-brand" href="{% url 'members:index'%}"><img src="{% static 'images/logo.png' %}"
+                            alt="logo"></a>
+                    <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav lavalamp ml-auto menu">
+                            <li class="nav-item"><a href="{% url 'members:index'%}" class="nav-link active">Home</a>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'members:about'%}" class="nav-link">About</a></li>
+                            <li class="nav-item"><a href="{% url 'members:course'%}" class="nav-link">Courses</a>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'members:blog'%}" class="nav-link">Blog</a>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'members:dashboard'%}" class="nav-link">Dashboard</a>
+                            </li>
+                            <li class="nav-item"><a href="#" class="nav-link">Pages</a>
+                                <ul class="navbar-nav nav mx-auto">
+                                    <li class="nav-item"><a href="#" class="nav-link">Events</a>
+                                    </li>
+                                    <li class="nav-item"><a href="#" class="nav-link">Scholarship</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'members:teacher_profile'%}"
+                                            class="nav-link">Teachers Profile</a></li>
+                                    <li class="nav-item"><a href="forgot-password/" class="nav-link">Forgot Password</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'members:contact'%}" class="nav-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="mr-auto search_area ">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><i class="search_btn flaticon-magnifier"></i>
+                                <div id="search">
+                                    <button type="button" class="close">×</button>
+                                    <form>
+                                        <input type="search" value="" placeholder="Search here...." required />
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav><!-- END NAVBAR -->
+            </div>
+        </div>
+
+        <div class="intro_wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-8">
+                        <div class="intro_text">
+                            <h1>Student Login Page</h1>
+                            <div class="pages_links">
+                                <a href="{% url 'members:index'%}" title="">Home</a>
+                                <a href="{% url 'members:contact'%}" title="" class="active">Contact Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> <!-- End Header -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username"><b>Username:</b></label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+    
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password"><b>Password:</b></label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-4">Login</button>
+    </form>
+    <footer class="footer_2">
+        <div class="container">
+            <div class="footer_top">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="footer_single_col footer_intro">
+                            <img src="{% static 'images/logo2.png' %}" alt="" class="f_logo">
+                            <p>Ante amet vitae vulputate odio nulla vel pretium pulvinar aenean. Rhoncus eget adipiscing
+                                etiam arcu. Ultricies justo ipsum nec amet.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-2">
+                        <div class="footer_single_col">
+                            <h3>Useful Links</h3>
+                            <ul class="location_info quick_inf0">
+                                <li><a href="{% url 'members:about'%}">About Us</a></li>
+                                <li><a href="{% url 'members:blog'%}">Blog</a></li>
+                                <li><a href="{% url 'members:contact'%}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-2">
+                        <div class="footer_single_col information">
+                            <h3>information</h3>
+                            <ul class="quick_inf0">
+                                <li><a href="#">Leadereship</a></li>
+                                <li><a href="#">Company</a></li>
+                                <li><a href="#">Diversity</a></li>
+                                <li><a href="#">Jobs</a></li>
+                                <li><a href="#">Press</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="footer_single_col contact">
+                            <h3>Contact Us</h3>
+                            <p>Ante amet vitae vulputate odio nulla vel pretium aenean.</p>
+                            <div class="contact_info">
+                                <span>+000 124 325</span>
+                                <span class="email">info@yourdomain.com</span>
+                            </div>
+                            <ul class="social_items d-flex list-unstyled">
+                                <li><a href="#"><i class="fab fa-facebook-f fb-icon"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter twitt-icon"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in link-icon"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram ins-icon"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shapes_bg">
+            <img src="{% static 'images/shapes/testimonial_2_shpe_1.png' %}" alt="" class="shape_3">
+            <img src="{% static 'images/shapes/footer_2.png' %}" alt="" class="shape_1">
+        </div>
+    </footer><!-- End Footer -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <!-- JavaScript -->
+
+    <!-- Revolution Extensions -->
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.carousel.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.actions.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.kenburn.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.layeranimation.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.migration.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.navigation.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.parallax.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.slideanims.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/extensions/revolution.extension.video.min.js '%}"></script>
+    <script src="{% static 'js/assets/revolution/revolution.js '%}"></script>
+    <script src="{% static 'js/custom.js '%}"></script>
+</body>
+
+</html>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Full-width input fields */
+    input[type=text],
+    input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto;
+        /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%;
+        /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button (x) */
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+        from {
+            -webkit-transform: scale(0)
+        }
+
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes animatezoom {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+</style>

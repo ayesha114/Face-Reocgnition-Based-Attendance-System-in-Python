@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+</head>
+<body>
+    {% extends 'base_generic.html' %}
+
+    {% block content %}
+      <h2>Student Attendance</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Attendance Date</th>
+            <th>Attendance Time</th>
+            <th>Present</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for attendance in attendances %}
+            <tr>
+              <td>{{ attendance.student }}</td>
+              <td>{{ attendance.date }}</td>
+              <td>{{ attendance.time }}</td>
+              <td>Yes</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="4">No attendances found.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endblock %}
+</body>
+</html>

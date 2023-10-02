@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video id="webcam" autoplay width="100%" height="100%"></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <p id="message"></p>
+    <script>
+        const video = document.getElementById('webcam');
+        const canvas = document.getElementById('canvas');
+        const message = document.getElementById('message');
+    
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                width: { ideal: 1920 },
+                height: { ideal: 1080 },
+                facingMode: 'user'
+            }
+        })
+            .then(stream => {
+                video.srcObject = stream;
+                setTimeout(captureAndSendImage, 5000);
+            })
+            .catch(error => {
+                console.log('An error occurred while accessing the camera:', error);
+            });
+    
+        function captureAndSendImage() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            let base64Image = canvas.toDataURL('image/png').replace(/^data:image\/(png|jpg);base64,/, "");
+            sendImageToServer(base64Image);
+        }
+    
+        function sendImageToServer(base64Image) {
+            fetch('{% url "members:capture" %}', {
+                method: 'POST',
+                body: JSON.stringify({image: "data:image/png;base64," + base64Image}),
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("You are present");
+                    message.innerText = "Image saved and processed successfully! Your attendance is marked as present.";
+                    setTimeout(captureAndSendImage, 5000);
+                } else {
+                    alert(data.message); // Alert with the specific message returned from the server
+                    if (data.message !== 'Face already captured') {
+                        setTimeout(captureAndSendImage, 5000);
+                    }
+                }
+            })
+            .catch(function() {
+                console.log('error occurred while sending image to server');
+            });
+        }
+    </script>
+    
+</body>
+</html>
+

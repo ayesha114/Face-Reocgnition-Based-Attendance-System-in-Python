@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div id="alert-box" class="alert alert-danger d-none"></div>
+
+        <form method="post">
+    
+          <!-- CSRF token -->
+          {% csrf_token %}
+          
+          <!-- First Name -->
+          <div class="form-group">
+              <label for="first_name"><b>First Name:</b></label>
+              <input type="text" class="form-control" id="first_name" name="first_name" required>
+          </div>
+      
+          <!-- Last Name -->
+          <div class="form-group">
+              <label for="last_name"><b>Last Name:</b></label>
+              <input type="text" class="form-control" id="last_name" name="last_name" required>
+          </div>
+      
+          <!-- Username -->
+          <div class="form-group">
+              <label for="username"><b>Username:</b></label>
+              <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+      
+          <!-- Password -->
+          <div class="form-group">
+              <label for="password"><b>Password:</b></label>
+              <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+      
+          <!-- Confirm Password -->
+          <div class="form-group">
+              <label for="confirm_password"><b>Confirm Password:</b></label>
+              <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+          </div>
+      
+          <!-- Semester Dropdown -->
+          <div class="form-group col-md-6">
+              <label for="semester"><b>Choose Semester:</b></label>
+              <select class="form-control" id="semester" name="semester" required>
+                  <option value="">--Please choose semester--</option>
+                  {% for semester in semesters %}
+                      <option value="{{ semester }}">Semester {{ semester }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+      
+          <!-- Phone -->
+          <div class="form-group">
+              <label for="phone"><b>Phone:</b></label>
+              <input type="text" class="form-control" id="phone" name="phone" required>
+          </div>
+      
+          <!-- Gender -->
+          <div class="form-group">
+              <label for="gender"><b>Gender:</b></label>
+              <select class="form-control" id="gender" name="gender" required>
+                  <option value="">--Select Gender--</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+              </select>
+          </div>
+      
+          <!-- Type -->
+          <div class="form-group">
+              <label for="type"><b>Type:</b></label>
+              <input type="text" class="form-control" id="type" name="type" required>
+          </div>
+      
+          <!-- Department -->
+          <div class="form-group">
+              <label for="department"><b>Department:</b></label>
+              <input type="text" class="form-control" id="department" name="department" required>
+          </div>
+      
+          <!-- Class Name -->
+          <div class="form-group">
+              <label for="class_name"><b>Class Name:</b></label>
+              <input type="text" class="form-control" id="class_name" name="class_name" required>
+          </div>
+      
+          <!-- Roll Number -->
+          <div class="form-group">
+              <label for="roll_no"><b>Roll Number:</b></label>
+              <input type="text" class="form-control" id="roll_no" name="roll_no" required>
+          </div>
+      
+          <button type="submit" class="btn btn-primary mt-4">Register</button>
+      
+      </form>
+    </div>
+
+    <!-- JQuery, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $('#registration-form').submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+
+            if(!form[0].checkValidity()) {
+                $('#alert-box').text('Please fill in the required fields or check your input!').removeClass('d-none');
+                return false;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/register/",
+                data: form.serialize(),
+                success: function(data) {
+                    if (data.success) {
+                        window.location.href = '/login/';
+                    } else {
+                        $('#alert-box').text(data.error).removeClass('d-none');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

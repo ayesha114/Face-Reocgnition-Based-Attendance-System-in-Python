@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin Login</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .btn {
+            background-color: #4f868c;
+            color: white;
+            font-size: larger;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
+                </div>
+            </div>
+            <input type="submit" value="Login" class="btn">
+            <div class="row mt-2">
+                <div class="form-group col-md-6">
+                    <p><b>Don't have an account?</b> <a href="{% url 'members:adRegister' %}">Register Here</a></p>
+                </div>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <script>alert("{{ message }}");</script>
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
