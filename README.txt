@@ -1,5 +1,5 @@
-source /home/tehseen/Documents/FaceRecogProj/envproj/bin/activate
 
+Face-Reocgnition-Based-Attendance-System-in-Python
 
 python manage.py makemigrations members
 the above command will create a file in migrations folder under members
